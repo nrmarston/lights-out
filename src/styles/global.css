@@ -3,5 +3,46 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  --ease-custom: cubic-bezier(0.645, 0.045, 0.355, 1);
+  :root {
+    --ease-custom: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --tile-size: clamp(2.5rem, 4vw, 5rem);
+  }
+
+  .game-wrapper {
+    padding: 16px;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 0.2fr);
+    gap: 5px;
+  }
+  .cell {
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border: 1px solid #cecece;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    background: radial-gradient(circle, #ff6666 30%, #cc0000 100%);
+  }
+  .cell::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    opacity: 0.5;
+  }
+  .off {
+    background: radial-gradient(circle, #e3dfe6 30%, #8e8c99 100%);
+  }
+  .controls {
+    padding-top: 8px;
+  }
 }
